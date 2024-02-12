@@ -1,8 +1,8 @@
 logs/*
 api/app
 api/app/*
-# assets/private/*
-# assets/public/*
+assets/private/*
+assets/public/*
 backoffice/app
 backoffice/app/*
 frontend/app

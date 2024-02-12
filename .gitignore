@@ -1,0 +1,13 @@
+logs/*
+api/app
+api/app/*
+# assets/private/*
+# assets/public/*
+backoffice/app
+backoffice/app/*
+frontend/app
+frontend/app/*
+db/dumps/*
+frontend/app/*
+nginx/conf/app.conf
+nginx/conf/backoffice.conf

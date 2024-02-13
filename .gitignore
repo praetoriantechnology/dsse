@@ -11,3 +11,4 @@ db/dumps/*
 frontend/app/*
 nginx/conf/app.conf
 nginx/conf/backoffice.conf
+defaults/data.sql

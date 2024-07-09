@@ -12,6 +12,8 @@ services:
   beanstalkd:
     image: idcttech/beanstalkd:latest
     restart: "always"
+    environment:
+      - BINLOG=off
     ports:
       - ${BEANSTALKD_PORT}:11300
 
@@ -37,6 +39,7 @@ services:
 
   db:
     image: mariadb:11
+    command: --max_allowed_packet=32505856
     volumes:
        - database:/var/lib/mysql
     ports:

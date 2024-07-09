@@ -39,7 +39,7 @@ services:
 
   db:
     image: mariadb:11
-    command: --max_allowed_packet=32505856
+    command: --max_allowed_packet=32505856 --innodb_log_file_size=512M --general_log=on --general_log_file=/tmp/mysql.log
     volumes:
        - database:/var/lib/mysql
     ports:

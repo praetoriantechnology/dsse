@@ -29,8 +29,8 @@ services:
       - ./nats/nats.conf:/etc/nats/nats.conf
       - ./nats/data:/data
       - ./nats/install:/opt/install
-    post_start:
-      - command: /opt/install/init-nats.sh
+    # post_start:
+    #   - command: /opt/install/init-nats.sh
 
   mercure:
     image: dunglas/mercure

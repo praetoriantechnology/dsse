@@ -12,3 +12,4 @@ frontend/app/*
 nginx/conf/app.conf
 nginx/conf/backoffice.conf
 defaults/data.sql
+nats/data/

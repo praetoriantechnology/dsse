@@ -8,14 +8,29 @@ services:
     ports:
       - ${REDIS_PORT}:6379
 
-  beanstalkd:
-    build:
-      context: beanstalkd
+  redis2:
+    image: redis:7-alpine
+    volumes:
+      - redis2:/data
     restart: "always"
-    environment:
-      - BINLOG=off
     ports:
-      - ${BEANSTALKD_PORT}:11300
+      - 7777:6379
+
+  nats:
+    build:
+      context: nats
+    restart: always
+    command: -c /etc/nats/nats.conf
+    ports:
+      - "${NATS_PORT}:4222" # client port
+      - "6222:6222" # cluster port
+      - "8222:8222" # monitoring port
+    volumes:
+      - ./nats/nats.conf:/etc/nats/nats.conf
+      - ./nats/data:/data
+      - ./nats/install:/opt/install
+    post_start:
+      - command: /opt/install/init-nats.sh
 
   mercure:
     image: dunglas/mercure
@@ -60,5 +75,6 @@ services:
 
 volumes:
    redis: ~
+   redis2: ~
    publisher: ~
    database: ~

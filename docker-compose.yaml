@@ -1,20 +1,12 @@
 services:
 
-  redis:
-    image: redis:7-alpine
+  valkey:
+    image: redis:alpine
     volumes:
-      - redis:/data
+      - valkey:/data
     restart: "always"
     ports:
       - ${REDIS_PORT}:6379
-
-  redis2:
-    image: redis:7-alpine
-    volumes:
-      - redis2:/data
-    restart: "always"
-    ports:
-      - 7777:6379
 
   nats:
     build:
@@ -74,7 +66,6 @@ services:
       - ${ASSETS_DIR}:/app/assets
 
 volumes:
-   redis: ~
-   redis2: ~
+   valkey: ~
    publisher: ~
    database: ~

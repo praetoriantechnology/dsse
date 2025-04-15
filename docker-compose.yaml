@@ -45,7 +45,7 @@ services:
     restart: "always"
 
   db:
-    image: mariadb:11
+    image: mariadb:11.7.2
     command: --max_allowed_packet=32505856 --innodb_log_file_size=512M --general_log=on --general_log_file=/tmp/mysql.log
     volumes:
        - database:/var/lib/mysql
@@ -54,6 +54,7 @@ services:
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: devroot
+      MYSQL_ROOT_PASSWORD: devroot
 
   assets:
     hostname: assets
